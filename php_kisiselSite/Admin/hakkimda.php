@@ -1,36 +1,44 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else {
+
+  ?>
   <?php
 
- $egitimSor=$db->prepare("SELECT * FROM egitim");
-$egitimSor->execute();
-$egitimCek=$egitimSor->fetchAll(PDO::FETCH_ASSOC);
+ $hakkimdaSor=$db->prepare("SELECT * FROM hakkimda");
+$hakkimdaSor->execute();
+$hakkimdaCek=$hakkimdaSor->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
         <div id="page-wrapper">
+
 <div>
-  <center><h1>Eğitim Ayar Paneli</h1></center>
+  <center><h1>Hakkımda Ayar Paneli</h1></center>
   <hr>
 
 </div>
-
 <table class="table">
   <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Okul Ad</th>
-      <th scope="col">Okul Değer</th>
-      <th scope="col">Okul Tarih</th>
+      <th scope="col">Hakkımda Alanlar</th>
+      <th scope="col">Hakkımda Değer</th>
+      <th scope="col"></th>
       <th scope="col">İslem</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach($egitimCek as $egitimRow) { ?>
+    <?php foreach($hakkimdaCek as $hakkimdaRow) { ?>
     <tr>
-      <td> <?php echo $egitimRow['id']; ?></td>
-      <td><?php echo $egitimRow['okul_adi']; ?></td>
-      <td> <?php echo $egitimRow['okul_degeri']; ?></td>
-      <td> <?php echo $egitimRow['okul_tarih']; ?></td>
+      <td> <?php echo $hakkimdaRow['id']; ?></td>
+      <td><?php echo $hakkimdaRow['hakkimda_alan']; ?></td>
+      <td> <?php echo $hakkimdaRow['hakkimda_deger']; ?></td>
       <td></td>
     </tr>
 
@@ -60,3 +68,5 @@ $egitimCek=$egitimSor->fetchAll(PDO::FETCH_ASSOC);
 </script>
 <!-- //map -->
        </div>
+
+       <?php } ?>

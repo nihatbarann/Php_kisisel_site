@@ -2,6 +2,8 @@
 
 include 'islem.php';
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -73,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="banner-text-w3layouts">
 				<h3><?php echo $anasafyaCek["Anasayfa_yazi1"]; ?></h3>
 				<h2><?php echo $anasafyaCek["Anasayfa_yazi2"]; ?></h2>
-				<a href="#"><?php echo $anasafyaCek["Anasayfa_cv"]; ?></a>
+				<a href="https://s6.dosya.tc/server8/22isga/nihat.pdf.html"><?php echo $anasafyaCek["Anasayfa_cv"]; ?></a>
 			</div>
 		</div>
 
@@ -175,19 +177,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="contact-form">
 				<h5 class="title-main-w3ls"></h5>
-				<form action="#" method="post">
+				<form action="islem.php" method="post">
 					<div class="col-md-6 styled-input-w3-agile">
-						<input type="text" name="Full Name" placeholder="Ad-Soyad Giriniz" required="">
+						<input type="text" name="isimSoyisim" placeholder="Ad-Soyad Giriniz" required="">
 					</div>
 					<div class="col-md-6 styled-input-w3-agile">
 						<input type="email" name="Email" placeholder="E-posta Adresinizi Giriniz" required="">
 					</div>
 					<div class="clearfix"> </div>
 					<div class="styled-input-w3-agile">
-						<input type="text" name="Subject" placeholder="Konu Giriniz" required="">
+						<input type="text" name="konu" placeholder="Konu Baslığı Giriniz" required="">
 					</div>	
 					<div class="styled-input-w3-agile textarea-grid">
-						<textarea name="Message" placeholder="Mesaj Giriniz" required=""></textarea>
+						<textarea name="mesaj" placeholder="Mesaj Giriniz" required=""></textarea>
 					</div>
 					<input type="submit" value="Gönder" name="gonder">
 				</form>

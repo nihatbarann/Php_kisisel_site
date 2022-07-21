@@ -1,4 +1,11 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else {
+  ?>
   <?php
 
  $siteSor=$db->prepare("SELECT * FROM siteAyarlari");
@@ -84,3 +91,4 @@ $siteCek=$siteSor->fetch(PDO::FETCH_ASSOC);
 </script>
 <!-- //map -->
        </div>
+       <?php } ?>

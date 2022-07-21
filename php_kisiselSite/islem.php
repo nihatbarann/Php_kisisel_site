@@ -1,7 +1,8 @@
 <?php include 'baglan.php'?>
 
 <?php
-$site=$db->prepare("SELECT * FROM  	siteayarlari");
+
+$site=$db->prepare("SELECT * FROM  siteayarlari");
 $site->execute();
 $siteCek=$site->fetch(PDO::FETCH_ASSOC);
 
@@ -35,13 +36,13 @@ if(isset($_POST['AdminGiris'])){
 
 	$kad=htmlspecialchars($_POST['kadi']);
 	$pswd=$_POST['psswd'];
-	ob_start();
-	session_start();
 	$adminSorgu=$db->prepare("SELECT * FROM kullanici WHERE kadi=? and psswd=?");
 	$adminSorgu->execute([$kad,$pswd]);
 
 	if($adminSorgu->rowCount()){
 
+session_start();
+ob_start();
 
 
         $_SESSION['kullaniciAdi']=$kad;
@@ -54,6 +55,42 @@ if(isset($_POST['AdminGiris'])){
 		exit();
 	
 	}
+}
+
+
+if(isset($_POST['gonder'])){
+$ad=$_POST['isimSoyisim'];
+$mail=$_POST['Email'];
+$konu=$_POST['konu'];
+$mesaj=$_POST['mesaj'];
+
+$iletisim=$db->prepare("INSERT INTO iletisim VALUES('',?,?,?,?,'')");
+$iletisim->execute([$ad,$mail,$konu,$mesaj]);
+$metin="konu Başlığı ".$konu."Mesaj  ".$mesaj;
+mail("ngtb.2125@gmail.com",$metin,"from:'$mail'");
+
+
+if($iletisim){
+header("location:index.php");
+}
+
+}
+
+if(isset($_POST['menuEkle'])){
+$menuAd=$_POST['menuAd'];
+$menuURL=$_POST['menuURL'];
+
+$menuEkle=$db->prepare("INSERT INTO menuler VALUES('',?,?)");
+$menuEkle->execute([$menuAd,$menuURL]);
+
+}
+if(isset($_POST['yetenekEkle'])){
+$yetenekAd=$_POST['yetenekAd'];
+$yetenekYuzde=$_POST['yetenekYuzde'];
+
+$yetenekEkle=$db->prepare("INSERT INTO yetenekler VALUES('',?,?)");
+$yetenekEkle->execute([$yetenekAd,$yetenekYuzde]);
+
 }
 
 if(isset($_POST['siteGuncelle'])){
@@ -108,4 +145,5 @@ if(isset($_POST['AnasayfaGuncelle'])){
 
 	}
 }
+
 ?>

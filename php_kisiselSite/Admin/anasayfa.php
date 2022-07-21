@@ -1,12 +1,19 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else{
+  ?>
 
 
         <div id="page-wrapper">
 
 <div>
 	
-<h1>Yonetim Paneli</h1>
-<h3>Anasayfa</h3>
+<center><h1>Yonetim Paneli</h1></center>
+<center><h3>Anasayfa</h3></center>
 <hr>
 </div>
 
@@ -33,3 +40,4 @@
 </script>
 <!-- //map -->
        </div>
+       <?php } ?>

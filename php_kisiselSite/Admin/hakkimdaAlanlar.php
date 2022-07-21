@@ -1,16 +1,24 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else {
+
+  ?>
   <?php
 
- $hakkimdaSor=$db->prepare("SELECT * FROM hakkimda");
-$hakkimdaSor->execute();
-$hakkimdaCek=$hakkimdaSor->fetchAll(PDO::FETCH_ASSOC);
+ $hakkimdaAlanSor=$db->prepare("SELECT * FROM hakkimda_alanlar");
+$hakkimdaAlanSor->execute();
+$hakkimdaAlanCek=$hakkimdaAlanSor->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
         <div id="page-wrapper">
 
 <div>
-  <center><h1>Hakkımda Ayar Paneli</h1></center>
+  <center><h1>Hakkımda Alanlar Ayar Paneli</h1></center>
   <hr>
 
 </div>
@@ -18,18 +26,15 @@ $hakkimdaCek=$hakkimdaSor->fetchAll(PDO::FETCH_ASSOC);
   <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Hakkımda Alanlar</th>
-      <th scope="col">Hakkımda Değer</th>
-      <th scope="col"></th>
+      <th scope="col">Hakkimda Alan</th>
       <th scope="col">İslem</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach($hakkimdaCek as $hakkimdaRow) { ?>
+    <?php foreach($hakkimdaAlanCek as $hakkimdaAlanRow) { ?>
     <tr>
-      <td> <?php echo $hakkimdaRow['id']; ?></td>
-      <td><?php echo $hakkimdaRow['hakkimda_alan']; ?></td>
-      <td> <?php echo $hakkimdaRow['hakkimda_deger']; ?></td>
+      <td> <?php echo $hakkimdaAlanRow['id']; ?></td>
+      <td><?php echo $hakkimdaAlanRow['hakkimda_alan']; ?></td>
       <td></td>
     </tr>
 
@@ -59,3 +64,4 @@ $hakkimdaCek=$hakkimdaSor->fetchAll(PDO::FETCH_ASSOC);
 </script>
 <!-- //map -->
        </div>
+       <?php } ?>

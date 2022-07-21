@@ -1,4 +1,13 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else {
+  ?>
   <?php
 
  $menuSor=$db->prepare("SELECT * FROM menuler");
@@ -8,12 +17,16 @@ $menuCek=$menuSor->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
         <div id="page-wrapper">
-
-<div>
-  <center><h1>Menüler Ayar Paneli</h1></center>
+<center><h1>Menüler Ayar Paneli</h1></center>
   <hr>
 
-</div>
+
+<center><form action="/web/islem.php" method="post">
+ <input type="text" name="menuAd" placeholder="Yeni Menü Adı giriniz"></br>
+ <input type="text" name="menuURL" placeholder="Yeni Menü URL giriniz"></br>
+  <button style="margin-top: 10px;"type="submit" class="btn btn-primary" name="menuEkle">Ekle</button>
+</form></center>
+
 <table class="table">
   <thead>
     <tr>
@@ -58,3 +71,4 @@ $menuCek=$menuSor->fetchAll(PDO::FETCH_ASSOC);
 </script>
 <!-- //map -->
        </div>
+       <?php } ?>

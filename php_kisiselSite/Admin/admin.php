@@ -1,4 +1,11 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else {
+  ?>
   <?php
 
  $kullaniciSor=$db->prepare("SELECT * FROM kullanici");
@@ -62,3 +69,4 @@ $kullaniciCek=$kullaniciSor->fetch(PDO::FETCH_ASSOC);
 </script>
 <!-- //map -->
        </div>
+       <?php } ?>

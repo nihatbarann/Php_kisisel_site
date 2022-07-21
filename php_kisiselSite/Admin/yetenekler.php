@@ -1,4 +1,12 @@
- <?php include '../islem.php';  ?>
+ <?php include '../islem.php'; 
+
+
+if(!$_SESSION['kullaniciAdi']){
+
+header("location:/web/Admin/login.php?durum=izinsizgiris");
+}
+else {
+  ?>
   <?php
 
  $yetenekSor=$db->prepare("SELECT * FROM yetenekler");
@@ -13,6 +21,11 @@ $yetenekCek=$yetenekSor->fetchAll(PDO::FETCH_ASSOC);
   <hr>
 
 </div>
+<center><form action="/web/islem.php" method="post">
+ <input type="text" name="yetenekAd" placeholder="Yeni Yetenek Adı giriniz"></br>
+ <input type="text" name="yetenekYuzde" placeholder="Yeni Yetenek % giriniz"></br>
+  <button style="margin-top: 10px;"type="submit" class="btn btn-primary" name="yetenekEkle">Ekle</button>
+</form></center>
 
    <table class="table">
   <thead>
@@ -58,3 +71,4 @@ $yetenekCek=$yetenekSor->fetchAll(PDO::FETCH_ASSOC);
 </script>
 <!-- //map -->
        </div>
+       <?php } ?>

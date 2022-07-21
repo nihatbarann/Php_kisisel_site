@@ -58,12 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                       
-                        <li>
-                            <a href="?sayfa=anasayfa"><i class="fa fa-envelope nav_icon"></i>Anasayfa</a>
-                          
-                            <!-- /.nav-second-level -->
-                        </li>
-
+                       
                         <li>
                             <a href="?sayfa=anasayfaAyar"><i class="fa fa-envelope nav_icon"></i>Anasayfa Ayar</a>
                           
@@ -71,6 +66,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                           <li>
                             <a href="?sayfa=siteayar"><i class="fa fa-indent nav_icon"></i>Site Ayarları</a>
+                           
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="?sayfa=admin"><i class="fa fa-table nav_icon"></i>Admin</a>
                            
                             <!-- /.nav-second-level -->
                         </li>
@@ -93,11 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                           
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="?sayfa=admin"><i class="fa fa-table nav_icon"></i>Admin</a>
-                           
-                            <!-- /.nav-second-level -->
-                        </li>
+                        
                         <li>
                             <a href="logout.php"><i class="fa fa-sitemap fa-fw nav_icon"></i>Çıkış</a>
                            
